@@ -1,0 +1,24 @@
+{
+  "users": [
+    {
+      "name": "Kush",
+      "phone": "9999099991",
+      "id": 5
+    },
+    {
+      "name": "Aniridh",
+      "phone": "123123321",
+      "id": 7
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
