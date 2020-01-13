@@ -49,6 +49,13 @@ ionViewDidEnter(){
     this.router.navigateByUrl(`edit:${i.id}`)
   }
 
+  update(i){
+    // alert(i)
+    this.router.navigateByUrl(`edit/${i}`)
+
+
+  }
+
   addNew(){
     this.router.navigateByUrl('addNew')
   }

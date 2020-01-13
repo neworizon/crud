@@ -1,7 +1,7 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>all</ion-title>
-    <ion-icon name="add" slot="end" size="big" (click)="addNew()"> </ion-icon>
+  <ion-toolbar >
+    <ion-title>ALL</ion-title>
+    <ion-icon name="add" slot="end" size="medium" color='primary' (click)="addNew()" padding> </ion-icon>
   </ion-toolbar>
 </ion-header>
 
@@ -12,15 +12,15 @@
       <th>ID</th>
       <th>Name</th>
       <th>Phone</th>
-      <th></th>
-      <th></th>
+      <th colspan="2"> Action</th>
+      <!-- <th></th> -->
     </thead>
     <tbody>
-      <tr *ngFor= 'let i of person'>
+      <tr *ngFor= 'let i of person' >
         <td>{{i.id}}</td>
         <td>{{i.name}}</td>
         <td>{{i.phone}}</td>
-        <td><ion-icon name='create' color='primary' size='medium' [routerLink]="['/edit']" ></ion-icon></td>
+        <td (click)='update(i.id)'><ion-icon name='create' color='primary' size='medium'></ion-icon></td>
         <td><ion-icon name='trash' color='danger' size='medium' (click)="delete(i)"></ion-icon></td>
       </tr>
     </tbody>
