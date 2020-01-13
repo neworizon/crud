@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>all</ion-title>
+    <ion-icon name="add" slot="end" size="big" (click)="addNew()"> </ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <table class="table">
+    <thead>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Phone</th>
+      <th></th>
+      <th></th>
+    </thead>
+    <tbody>
+      <tr *ngFor= 'let i of person'>
+        <td>{{i.id}}</td>
+        <td>{{i.name}}</td>
+        <td>{{i.phone}}</td>
+        <td><ion-icon name='create' color='primary' size='medium' [routerLink]="['/edit']" ></ion-icon></td>
+        <td><ion-icon name='trash' color='danger' size='medium' (click)="delete(i)"></ion-icon></td>
+      </tr>
+    </tbody>
+  </table>
+</ion-content>
