@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Route, Router } from "@angular/router";
 import { HttpClient,HttpHeaders } from '@angular/common/http';
+import { NavController } from '@ionic/angular';
+import { environment } from "../../environments/environment";
+
 
 @Component({
   selector: 'app-edit',
@@ -8,10 +11,14 @@ import { HttpClient,HttpHeaders } from '@angular/common/http';
   styleUrls: ['./edit.page.scss'],
 })
 export class EditPage implements OnInit {
-  baseUrl = 'http://localhost:3000/users'
+  baseUrl = environment.baseUrl
   id;
   selectedEmployee :any={name:'',phone:'',id:''};
-  constructor(private route : ActivatedRoute, private http: HttpClient, private router: Router) { }
+  constructor(
+    private route : ActivatedRoute, 
+    private http: HttpClient, 
+    private router: Router,
+    private navCtrl: NavController) { }
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -38,7 +45,8 @@ export class EditPage implements OnInit {
     }
     // data = JSON.stringify(this.new)
     this.http.put(`${this.baseUrl}/${this.id}`, JSON.stringify(updatedData), this.httpOptions).subscribe(res => console.log(res));
-    this.router.navigateByUrl('all')
+    // this.router.navigateByUrl('all')
+    this.navCtrl.navigateRoot('all')
     
   }
 }

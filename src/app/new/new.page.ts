@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient , HttpHeaders} from "@angular/common/http";
 import { Router } from '@angular/router';
+import { environment } from "../../environments/environment";
+
 
 @Component({
   selector: 'app-new',
@@ -8,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./new.page.scss'],
 })
 export class NewPage implements OnInit {
-  baseUrl='http://localhost:3000/users'
+  baseUrl=environment.baseUrl
   new = {}
 
   

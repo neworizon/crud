@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient , HttpHeaders} from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 // import { Observable } from "rxjs/observable";
 import { Router } from "@angular/router";
 import { ToastController } from "@ionic/angular";
+import { environment } from "../../environments/environment";
 
 
 
@@ -12,51 +13,49 @@ import { ToastController } from "@ionic/angular";
   styleUrls: ['./all.page.scss'],
 })
 export class AllPage implements OnInit {
-  baseUrl = 'http://localhost:3000/users'
-  person:any
+  baseUrl = environment.baseUrl
+  person: any
   constructor(private http: HttpClient, private router: Router, private toast: ToastController) { }
 
   ngOnInit() {
     this.get()
   }
 
-ionViewDidEnter(){
-  this.get()
-}
-  get(){
-    this.http.get(this.baseUrl).subscribe( res => {
+  // ionViewDidEnter() {
+  //   // this.get()
+  // }
+  get() {
+    this.http.get(this.baseUrl).subscribe(res => {
       console.log(res);
       this.person = res;
     })
   }
-  async showToast(msg){
+  async showToast(msg) {
     const toast = await this.toast.create({
       message: msg,
       duration: 1000,
-      color:'dark',
-      position:'middle'
+      color: 'dark',
+      position: 'middle'
     });
     toast.present()
   }
-  delete(i){
-    this.http.delete(`${this.baseUrl}/${i.id}`).subscribe( ()=> {
+  delete(i) {
+    this.http.delete(`${this.baseUrl}/${i.id}`).subscribe(() => {
       this.showToast(`${i.name} was deleted successfully`);
       this.get()
     })
   }
 
-  alert(i){
+  alert(i) {
     this.router.navigateByUrl(`edit:${i.id}`)
   }
 
-  update(i){
+  update(i) {
     // alert(i)
     this.router.navigateByUrl(`edit/${i}`)
-
-
   }
 
-  addNew(){
+  addNew() {
     this.router.navigateByUrl('addNew')
   }
 }
