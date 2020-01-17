@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Route, Router } from "@angular/router";
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 
 @Component({
@@ -11,7 +11,7 @@ export class EditPage implements OnInit {
   baseUrl = 'http://localhost:3000/users'
   id;
   selectedEmployee :any={name:'',phone:'',id:''};
-  constructor(private route : ActivatedRoute, private http: HttpClient) { }
+  constructor(private route : ActivatedRoute, private http: HttpClient, private router: Router) { }
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -38,7 +38,7 @@ export class EditPage implements OnInit {
     }
     // data = JSON.stringify(this.new)
     this.http.put(`${this.baseUrl}/${this.id}`, JSON.stringify(updatedData), this.httpOptions).subscribe(res => console.log(res));
+    this.router.navigateByUrl('all')
     
   }
-
 }
