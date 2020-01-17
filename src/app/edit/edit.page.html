@@ -7,4 +7,16 @@
 
 <ion-content>
 
+<form (ngSubmit)= 'update(selectedEmployee)'>
+  <ion-item>
+    <ion-label >Name</ion-label>
+    <ion-input type="text" [(ngModel)]='selectedEmployee.name' name="name"></ion-input>
+  </ion-item>
+  <ion-item >
+    <ion-label >Phone</ion-label>
+    <ion-input type="text" [(ngModel)]='selectedEmployee.phone' name="phone"></ion-input>
+  </ion-item>
+  <ion-button type='submit' expand="block">Submit</ion-button>
+</form>
+
 </ion-content>
